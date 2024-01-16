@@ -28,3 +28,7 @@ var questions = [
 },
 
 ];
+
+// array containing the array index for the correct answers for each question:
+
+var correctArr = [0, 2, , , , , ];
