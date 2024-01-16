@@ -8,16 +8,20 @@ var timerEl = document.querySelector("#time");
 var answerFeedback = document.createElement("h2");
 var endScreen = document.querySelector("#end-screen");
 var finalScore = document.querySelector("#final-score");
+var submitButton = document.querySelector("#submit");
+var initialBox = document.querySelector("#initials");
+var clearBtn = document.querySelector("#clear");
 
 var timeLeft = 30;
 var questionNumber = 0;
 var score = 0;
+var scoreboard = [];
 
 function showEndScreen(){
-  questionEl.setAttribute("class", "hide");
-  endScreen.setAttribute("class", "");
-  timerEl.textContent = ``;
-  finalScore.textContent = score;
+    questionEl.setAttribute("class", "hide");
+    endScreen.setAttribute("class", "");
+    timerEl.textContent = ``;
+    finalScore.textContent = score;
 };
 // When the start button is pressed a timer starts
 
@@ -57,9 +61,9 @@ function nextQuestion (){
         }
         questionEl.setAttribute("class", "show");
     } else {
-    questionTitle.textContent = ``;
-    questionEl.setAttribute("class", "hide");
-}
+        questionTitle.textContent = ``;
+        questionEl.setAttribute("class", "hide");
+    }
 };
 
 startButton.addEventListener("click", function() {
@@ -91,14 +95,12 @@ function delayedFunc (){
             answerFeedback.textContent = "Correct!";
             score += 10;
             questionNumber++;
-            console.log(questionNumber);
             
             // When an incorrect answer is clicked the time is reduced
         } else{
             answerFeedback.textContent = "Wrong!";
             timeLeft -= 10;
             questionNumber++;
-            console.log(questionNumber);
         }
         
         // when an answer is clicked the next question appears after 0.5 seconds.
@@ -109,12 +111,27 @@ function delayedFunc (){
             timeLeft = 0;
         }
     });
-    console.log(questions.length);
     
-    
-    
-    // Gives the user the option of entering their intials
-    
-    
-    // Saves their score locally and lists it on the "highscores" page.
-    // There is a button with the option of resetting the leaderboard
+    submitButton.addEventListener("click", function(e){
+        e.preventDefault();
+        // Saves their score locally and lists it on the "highscores" page.
+        var savedScore = localStorage.setItem("savedScore", score);
+
+        var initials = localStorage.setItem("initials", initialBox.value.trim());
+
+        retrievedInitials = localStorage.getItem("initials");
+        retrievedScore = localStorage.getItem("savedScore");
+        var recentEntry = {name: [retrievedInitials],
+                         score: [retrievedScore]};
+        scoreboard.push(recentEntry);
+            
+            localStorage.setItem("scoreboard", JSON.stringify(scoreboard));
+            var retrievedScoreBoard = JSON.parse(localStorage.getItem(scoreboard));
+            console.log(retrievedScoreBoard);
+        })
+        
+                // There is a button with the option of resetting the leaderboard
+        
+      clearBtn.addEventListener("click", function(){
+            scoreboard = [];
+        });
