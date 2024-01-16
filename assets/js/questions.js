@@ -10,22 +10,22 @@ var questions = [
 },
 
 // TODO: create and add questions.
-    {
-    title: "" ,
-    answers: ["<body>", "<meta>", "<head>", "<h1>"]
-},
-    {
-    title: "Which part of the HTML file contains the Metadata of the webpage?" ,
-    answers: ["<body>", "<meta>", "<head>", "<h1>"]
-},
-    {
-    title: "Which part of the HTML file contains the Metadata of the webpage?" ,
-    answers: ["<body>", "<meta>", "<head>", "<h1>"]
-},
-    {
-    title: "Which part of the HTML file contains the Metadata of the webpage?" ,
-    answers: ["<body>", "<meta>", "<head>", "<h1>"]
-},
+//     {
+//     title: "" ,
+//     answers: ["<body>", "<meta>", "<head>", "<h1>"]
+// },
+//     {
+//     title: "Which part of the HTML file contains the Metadata of the webpage?" ,
+//     answers: ["<body>", "<meta>", "<head>", "<h1>"]
+// },
+//     {
+//     title: "Which part of the HTML file contains the Metadata of the webpage?" ,
+//     answers: ["<body>", "<meta>", "<head>", "<h1>"]
+// },
+//     {
+//     title: "Which part of the HTML file contains the Metadata of the webpage?" ,
+//     answers: ["<body>", "<meta>", "<head>", "<h1>"]
+// },
 
 ];
 
