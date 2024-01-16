@@ -1,4 +1,34 @@
+// Variables
+var startButton = document.querySelector("#start");
+var questionTitle = document.querySelector("#question-title");
+var questionChoices = document.querySelector("#choices");
+var timerEl = document.querySelector("#time");
+
+
 // When the start button is pressed a timer starts
+var timeLeft = 30;
+function CountdownTimer () {
+    
+
+    var timeInterval = setInterval(function () {
+        
+        if (timeLeft >= 0){
+
+            timerEl.textContent = timeLeft;
+            timeLeft--;
+        } else {
+            timerEl = ``;
+            clearInterval(timeInterval);
+        }
+    }, 1000);
+};
+
+startButton.addEventListener("click", function() {
+
+    CountdownTimer();
+    
+});
+
 // Then a question appears with 4 answer options
 // When an answer is clicked it tells the user if it is correct or incorrect
 // When an right answer is clicked the score changes
