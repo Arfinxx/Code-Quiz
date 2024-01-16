@@ -6,25 +6,29 @@ var questionTitle = document.querySelector("#question-title");
 var questionChoices = document.querySelector("#choices");
 var timerEl = document.querySelector("#time");
 var answerFeedback = document.createElement("h2");
+var endScreen = document.querySelector("#end-screen");
+var finalScore = document.querySelector("#final-score");
 
-
-var timeLeft = 30;
+var timeLeft = 20;
 var questionNumber = 0;
 var score = 0;
 
 // When the start button is pressed a timer starts
 
+timerEl.textContent = timeLeft;
 function countdownTimer () {
     
     
-    var timeInterval = setInterval(function () {
-        
-        if (timeLeft >= 0){
+    var timeInterval = setInterval(function() {
+        timeLeft--;
+        timerEl.textContent = timeLeft;
+       
+        if (timeLeft <= 0){
             
-            timerEl.textContent = timeLeft;
-            timeLeft--;
-        } else {
-            timerEl = ``;
+            questionEl.setAttribute("class", "hide");
+            endScreen.setAttribute("class", "");
+            timerEl.textContent = ``;
+            finalScore.textContent = score;
             clearInterval(timeInterval);
         }
     }, 1000);
@@ -36,20 +40,19 @@ function nextQuestion (){
         startScreen.textContent = ``;
         questionTitle.textContent = questions[questionNumber].title;
         questionChoices.textContent = `` ;
-    var answerArr = questions[questionNumber].answers;
-       
+        var answerArr = questions[questionNumber].answers;
+        
         for(i = 0; i < answerArr.length; i++) { 
-
-        var node = document.createElement("li");
-        var textnode = document.createTextNode(answerArr[i]);
-        node.appendChild(textnode);
-
-// assigns a custom number attribute so that individual list items can be selected
-        node.setAttribute("data-answerIndex", i)
+            
+            var node = document.createElement("li");
+            var textnode = document.createTextNode(answerArr[i]);
+            node.appendChild(textnode);
+            
+            // assigns a custom number attribute so that individual list items can be selected
+            node.setAttribute("data-answerIndex", i)
         questionChoices.appendChild(node);
-        console.log(questionNumber);
-   }
-   questionEl.setAttribute("class", "show");
+    }
+    questionEl.setAttribute("class", "show");
 } else {
     questionTitle.textContent = ``;
     questionEl.setAttribute("class", "hide");
@@ -64,7 +67,7 @@ startButton.addEventListener("click", function() {
 });
 
 function delayedFunc (){
-
+    
     questionEl.setAttribute("class", "hide");
     nextQuestion ();
     answerFeedback.textContent ="";
@@ -93,15 +96,16 @@ questionChoices.addEventListener("click", function(e){
             timeLeft = 0;
         }       
         questionNumber++;
-        
     }
     
-    setTimeout(delayedFunc,2000);
+    // when an answer is clicked the next question appears after 0.5 seconds.
+    setTimeout(delayedFunc,500);
+
+
 });
 
-// when an answer is clicked the next question appears after 0.5 seconds.
-
 // repeats until all questions have been answered, or time runs out
+
 // Gives the user the option of entering their intials
 
 
