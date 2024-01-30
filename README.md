@@ -2,7 +2,7 @@
 
 ## Description 
 
-In this Project, a code quiz was created so that I could test myslef on my coding knowledge and keep track of my scores. This project included the use of mainly Javascript which was used to bulid the functionality of the webpage. You can access the deployed webpage below:
+In this Project, a code quiz was created so that I could test myself on my coding knowledge and keep track of my scores. This project included the use of mainly Javascript which was used to bulid the functionality of the webpage. You can access the deployed webpage below:
 
 https://arfinxx.github.io/Code-Quiz/
 
